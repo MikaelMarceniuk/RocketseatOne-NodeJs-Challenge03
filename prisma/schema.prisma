@@ -18,7 +18,23 @@ model User {
   role          Role
   created_at    DateTime @default(now())
 
+  Org Org[]
+
   @@map("user")
+}
+
+model Org {
+  id         String   @id @default(uuid())
+  user_id    String
+  name       String
+  city       String
+  address    String
+  wpp_number String
+  created_at DateTime @default(now())
+
+  user User @relation(fields: [user_id], references: [id])
+
+  @@map("org")
 }
 
 enum Role {
