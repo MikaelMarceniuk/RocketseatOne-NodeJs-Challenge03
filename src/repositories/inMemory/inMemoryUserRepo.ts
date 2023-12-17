@@ -1,4 +1,4 @@
-import { $Enums, Prisma, User } from "@prisma/client"
+import { Prisma, User } from "@prisma/client"
 import IUserRepository from "../userRepository"
 import { randomUUID } from "crypto"
 
@@ -13,6 +13,10 @@ class InMemoryUserRepo implements IUserRepository {
     })
 
     return this.items[newLength - 1]
+  }
+
+  async findById(id: string): Promise<User | undefined> {
+    return this.items.find((p) => p.id == id)
   }
 
   async findByEmail(email: string): Promise<User | undefined> {
