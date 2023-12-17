@@ -5,7 +5,7 @@ import App from "src/app"
 
 let sut: FastifyInstance
 
-describe("/api Route (e2e)", () => {
+describe("POST /api/user (e2e)", () => {
   beforeAll(async () => {
     const app = new App()
     await app.init()
@@ -17,9 +17,14 @@ describe("/api Route (e2e)", () => {
     await sut.close()
   })
 
-  it("Should return hello world!", async () => {
-    const apiResp = await request(sut.server).get("/api")
+  it("Should create user", async () => {
+    const apiResp = await request(sut.server).post("/api/user").send({
+      name: "Mikael Marceniuk",
+      email: "mika.marceniuk@gmail.com",
+      password: "123456",
+      role: "MEMBER",
+    })
 
-    expect(apiResp.text).toBe("Hello World!")
+    expect(apiResp.statusCode).toBe(201)
   })
 })
