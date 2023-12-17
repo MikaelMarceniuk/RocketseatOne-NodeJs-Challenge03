@@ -24,6 +24,7 @@ jobs:
           node-version: '18.18.2'
           cache: 'npm'
 
+      - run: ./node_modules/.bin/wait-on tcp:5432
       - run: npm ci
       - run: npm run test:e2e
         env:
