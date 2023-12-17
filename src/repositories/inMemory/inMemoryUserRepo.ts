@@ -15,12 +15,12 @@ class InMemoryUserRepo implements IUserRepository {
     return this.items[newLength - 1]
   }
 
-  async findById(id: string): Promise<User | undefined> {
-    return this.items.find((p) => p.id == id)
+  async findById(id: string): Promise<User | null> {
+    return this.items.find((p) => p.id == id) || null
   }
 
-  async findByEmail(email: string): Promise<User | undefined> {
-    return this.items.find((p) => p.email == email)
+  async findByEmail(email: string): Promise<User | null> {
+    return this.items.find((p) => p.email == email) || null
   }
 }
 
