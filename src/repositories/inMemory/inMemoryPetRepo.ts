@@ -5,6 +5,10 @@ import { randomUUID } from "crypto"
 class InMemoryPetRepo implements IPetRepository {
   items: Pet[] = []
 
+  async findWithFilters(filters: { city: string }): Promise<Pet[]> {
+    throw new Error("Method not implemented.")
+  }
+
   async create(data: Prisma.PetUncheckedCreateInput): Promise<Pet> {
     const newLength = this.items.push({
       ...data,
