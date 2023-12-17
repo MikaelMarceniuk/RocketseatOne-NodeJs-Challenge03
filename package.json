@@ -16,6 +16,7 @@
     "@types/node": "^20.10.4",
     "@types/supertest": "^2.0.16",
     "eslint": "^8.56.0",
+    "prisma": "^5.7.0",
     "supertest": "^6.3.3",
     "tsup": "^8.0.1",
     "tsx": "^4.6.2",
@@ -23,6 +24,7 @@
     "vitest": "^1.0.4"
   },
   "dependencies": {
+    "@prisma/client": "^5.7.0",
     "dotenv": "^16.3.1",
     "fastify": "^4.25.1",
     "vite-tsconfig-paths": "^4.2.2",
