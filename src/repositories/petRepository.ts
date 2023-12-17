@@ -9,6 +9,7 @@ interface IFindWithFiltersParams {
 }
 
 interface IPetRepository {
+  findById(id: string): Promise<Pet>
   findWithFilters(filters: IFindWithFiltersParams): Promise<Pet[]>
   create(data: Prisma.PetUncheckedCreateInput): Promise<Pet>
 }

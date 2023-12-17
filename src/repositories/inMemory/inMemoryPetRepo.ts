@@ -5,6 +5,10 @@ import { randomUUID } from "crypto"
 class InMemoryPetRepo implements IPetRepository {
   items: Pet[] = []
 
+  findById(id: string): Promise<Pet> {
+    throw new Error("Method not implemented.")
+  }
+
   async findWithFilters(filters: { city: string }): Promise<Pet[]> {
     throw new Error("Method not implemented.")
   }
