@@ -5,7 +5,7 @@ import App from "src/app"
 
 let sut: FastifyInstance
 
-describe("/api Route (e2e)", () => {
+describe("POST /api/user/session Route (e2e)", () => {
   beforeAll(async () => {
     const app = new App()
     await app.init()
