@@ -1,4 +1,5 @@
 import fastify, { FastifyInstance } from "fastify"
+import fastifyJwt from "@fastify/jwt"
 import env from "@config/env"
 import userRouter from "./http/controllers/user/router"
 
@@ -7,7 +8,7 @@ class App {
 
   async init() {
     this.app = fastify()
-    this.app.get("/api", (_, reply) => reply.send("Hello World!"))
+    await this.loadMiddlewares()
     await this.loadRoutes()
   }
 
@@ -16,7 +17,13 @@ class App {
     console.log("====== HttpServer is up and running ======")
   }
 
+  async loadMiddlewares() {
+    await this.app.register(fastifyJwt, { secret: env.JWT_SECRET })
+  }
+
   async loadRoutes() {
+    this.app.get("/api", (_, reply) => reply.send("Hello World!"))
+
     this.app.register(userRouter, { prefix: "/api/user" })
   }
 }

@@ -31,6 +31,6 @@ describe("/api Route (e2e)", () => {
     })
 
     expect(apiResp.statusCode).toBe(200)
-    expect(apiResp.body).toEqual({ msg: "Authenticated" })
+    expect(apiResp.body).toEqual({ jwtToken: expect.any(String) })
   })
 })

@@ -12,9 +12,19 @@ const authUserController = async (req: FastifyRequest, rep: FastifyReply) => {
   const { email, password } = userSchema.parse(req.body)
 
   try {
-    await makeAuthUserUseCase().execute({ email, password })
+    const { user } = await makeAuthUserUseCase().execute({ email, password })
 
-    rep.status(200).send({ msg: "Authenticated" })
+    const jwtToken = await rep.jwtSign(
+      { role: user.role },
+      {
+        sign: {
+          sub: user.id,
+          expiresIn: "10m",
+        },
+      }
+    )
+
+    rep.status(200).send({ jwtToken })
   } catch (e) {
     if (e instanceof InvalidCredentialsError) {
       rep.status(400).send({ message: e.message })
