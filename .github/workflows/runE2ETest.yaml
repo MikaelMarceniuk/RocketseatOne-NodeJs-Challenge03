@@ -24,8 +24,8 @@ jobs:
           node-version: '18.18.2'
           cache: 'npm'
 
-      - run: ./node_modules/.bin/wait-on tcp:5432
       - run: npm ci
+      - run: ./node_modules/.bin/wait-on tcp:5432
       - run: npm run test:e2e
         env:
           DATABASE_URL: "postgresql://docker:docker@localhost:5432/findafriend?schema=public"
