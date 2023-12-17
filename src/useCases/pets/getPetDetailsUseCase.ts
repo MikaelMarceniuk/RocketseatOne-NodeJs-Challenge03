@@ -1,6 +1,6 @@
 import { Pet } from "@prisma/client"
-import IPetRepository from "@src/repositories/petRepository"
 import ResourceNotFoundError from "../errors/resourceNotFoundError"
+import IPetRepository from "@repo/petRepository"
 
 interface IGetPetDetailsRequest {
   petId: string

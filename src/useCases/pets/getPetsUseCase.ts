@@ -1,5 +1,5 @@
 import { Pet } from "@prisma/client"
-import IPetRepository from "@src/repositories/petRepository"
+import IPetRepository from "@repo/petRepository"
 
 interface IGetPetsRequest {
   city: string

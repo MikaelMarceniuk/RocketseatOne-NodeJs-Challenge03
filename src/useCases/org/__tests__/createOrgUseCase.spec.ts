@@ -2,8 +2,8 @@ import { beforeEach, describe, expect, it } from "vitest"
 import CreateOrgUseCase from "../createOrgUseCase"
 import InMemoryOrgRepo from "@repo/inMemory/inMemoryOrgRepo"
 import InMemoryUserRepo from "@repo/inMemory/inMemoryUserRepo"
-import ResourceNotFoundError from "@src/useCases/errors/resourceNotFoundError"
-import UnauthorizedError from "@src/useCases/errors/unauthorizedError"
+import ResourceNotFoundError from "@useCases/errors/resourceNotFoundError"
+import UnauthorizedError from "@useCases/errors/unauthorizedError"
 
 let userRepo: InMemoryUserRepo
 let orgRepo: InMemoryOrgRepo

@@ -1,6 +1,6 @@
 import { $Enums, User } from "@prisma/client"
-import IUserRepository from "@src/repositories/userRepository"
-import hashUserPassword from "@src/utils/hashUserPassword"
+import IUserRepository from "@repo/userRepository"
+import hashUserPassword from "@utils/hashUserPassword"
 
 export interface ICreateUserUseCaseRequest {
   name: string

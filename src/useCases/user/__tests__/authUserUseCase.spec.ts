@@ -2,8 +2,8 @@ import { beforeEach, describe, expect, it } from "vitest"
 import InMemoryUserRepo from "@repo/inMemory/inMemoryUserRepo"
 import { Prisma } from "@prisma/client"
 import AuthUserUseCase from "../authUserUseCase"
-import hashUserPassword from "@src/utils/hashUserPassword"
-import InvalidCredentialsError from "@src/useCases/errors/invalidCredentialsError"
+import hashUserPassword from "@utils/hashUserPassword"
+import InvalidCredentialsError from "@useCases/errors/invalidCredentialsError"
 
 const userPassword = "123456"
 let userRepo: InMemoryUserRepo

@@ -1,7 +1,7 @@
-import App from "@src/app"
 import { afterAll, beforeAll, describe, expect, it } from "vitest"
 import request from "supertest"
 import { FastifyInstance } from "fastify"
+import App from "src/app"
 
 let sut: FastifyInstance
 

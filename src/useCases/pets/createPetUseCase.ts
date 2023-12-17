@@ -1,8 +1,8 @@
-import IOrgRepository from "@src/repositories/orgRepository"
+import ICharacteristicRepository from "@repo/characteristicRepository"
+import IOrgRepository from "@repo/orgRepository"
+import IPetCharacteristicRepository from "@repo/petCharacteristicRepository"
+import IPetRepository from "@repo/petRepository"
 import ResourceNotFoundError from "../errors/resourceNotFoundError"
-import ICharacteristicRepository from "@src/repositories/characteristicRepository"
-import IPetRepository from "@src/repositories/petRepository"
-import IPetCharacteristicRepository from "@src/repositories/petCharacteristicRepository"
 import { Pet, PetCharacteristic } from "@prisma/client"
 
 export interface ICreatePetRequest {

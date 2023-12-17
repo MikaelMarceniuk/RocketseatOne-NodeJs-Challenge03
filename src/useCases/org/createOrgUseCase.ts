@@ -1,5 +1,5 @@
-import IOrgRepository from "@src/repositories/orgRepository"
-import IUserRepository from "@src/repositories/userRepository"
+import IOrgRepository from "@repo/orgRepository"
+import IUserRepository from "@repo/userRepository"
 import ResourceNotFoundError from "../errors/resourceNotFoundError"
 import UnauthorizedError from "../errors/unauthorizedError"
 import { Org } from "@prisma/client"

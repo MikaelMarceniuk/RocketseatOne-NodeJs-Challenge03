@@ -1,10 +1,10 @@
 import { beforeEach, describe, expect, it } from "vitest"
 import CreatePetUseCase from "../createPetUseCase"
-import InMemoryOrgRepo from "@src/repositories/inMemory/inMemoryOrgRepo"
-import InMemoryCharacteristcRepo from "@src/repositories/inMemory/inMemoryCharacteristicRepo"
-import InMemoryPetRepo from "@src/repositories/inMemory/inMemoryPetRepo"
-import InMemoryPetCharacteristicRepo from "@src/repositories/inMemory/inMemoryPetCharacteristicRepo"
-import ResourceNotFoundError from "@src/useCases/errors/resourceNotFoundError"
+import InMemoryPetCharacteristicRepo from "@repo/inMemory/inMemoryPetCharacteristicRepo"
+import InMemoryCharacteristcRepo from "@repo/inMemory/inMemoryCharacteristicRepo"
+import InMemoryOrgRepo from "@repo/inMemory/inMemoryOrgRepo"
+import InMemoryPetRepo from "@repo/inMemory/inMemoryPetRepo"
+import ResourceNotFoundError from "@useCases/errors/resourceNotFoundError"
 
 let orgRepo: InMemoryOrgRepo
 let characteristicRepo: InMemoryCharacteristcRepo
