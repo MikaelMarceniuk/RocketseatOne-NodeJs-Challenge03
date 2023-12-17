@@ -24,7 +24,25 @@ const authUserController = async (req: FastifyRequest, rep: FastifyReply) => {
       }
     )
 
-    rep.status(200).send({ jwtToken })
+    const refreshToken = await rep.jwtSign(
+      { role: user.role },
+      {
+        sign: {
+          sub: user.id,
+          expiresIn: "7d",
+        },
+      }
+    )
+
+    rep
+      .setCookie("refreshToken", refreshToken, {
+        path: "/",
+        secure: true,
+        sameSite: true,
+        httpOnly: true,
+      })
+      .status(200)
+      .send({ jwtToken })
   } catch (e) {
     if (e instanceof InvalidCredentialsError) {
       rep.status(400).send({ message: e.message })

@@ -25,15 +25,20 @@ describe("/api Route (e2e)", () => {
       role: "MEMBER",
     })
 
-    const apiResp = await request(sut.server).post("/api/user/session").send({
-      email: "mika.marceniuk@gmail.com",
-      password: "123456",
-    })
+    const apiAuthResp = await request(sut.server)
+      .post("/api/user/session")
+      .send({
+        email: "mika.marceniuk@gmail.com",
+        password: "123456",
+      })
 
-    expect(apiResp.statusCode).toBe(200)
-    expect(apiResp.body).toEqual({ jwtToken: expect.any(String) })
-    expect(apiResp.get("Set-Cookie")).toEqual([
-      expect.stringContaining("refreshToken="),
-    ])
+    const apiResp = await request(sut.server)
+      .patch("/api/user/session/refresh")
+      .set("Cookie", apiAuthResp.get("Set-Cookie"))
+
+    expect(apiResp.statusCode).toEqual(200)
+    expect(apiResp.body).toEqual(
+      expect.objectContaining({ token: expect.any(String) })
+    )
   })
 })

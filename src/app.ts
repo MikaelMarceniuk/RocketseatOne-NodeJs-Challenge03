@@ -2,6 +2,7 @@ import fastify, { FastifyInstance } from "fastify"
 import fastifyJwt from "@fastify/jwt"
 import env from "@config/env"
 import userRouter from "./http/controllers/user/router"
+import fastifyCookie from "@fastify/cookie"
 
 class App {
   app: FastifyInstance
@@ -18,7 +19,11 @@ class App {
   }
 
   async loadMiddlewares() {
-    await this.app.register(fastifyJwt, { secret: env.JWT_SECRET })
+    await this.app.register(fastifyJwt, {
+      secret: env.JWT_SECRET,
+      cookie: { cookieName: "refreshToken", signed: false },
+    })
+    await this.app.register(fastifyCookie)
   }
 
   async loadRoutes() {
