@@ -32,9 +32,41 @@ model Org {
   wpp_number String
   created_at DateTime @default(now())
 
-  user User @relation(fields: [user_id], references: [id])
+  user User  @relation(fields: [user_id], references: [id])
+  Pet  Pet[]
 
   @@map("org")
+}
+
+model Pet {
+  id     String @id @default(uuid())
+  org_id String
+  name   String
+
+  org               Org                 @relation(fields: [org_id], references: [id])
+  PetCharacteristic PetCharacteristic[]
+
+  @@map("pet")
+}
+
+model Characteristic {
+  id                Int                 @id @default(autoincrement())
+  name              String
+  PetCharacteristic PetCharacteristic[]
+
+  @@map("characteristic")
+}
+
+model PetCharacteristic {
+  id                Int    @id @default(autoincrement())
+  pet_id            String
+  characteristic_id Int
+  value             String
+
+  pet            Pet            @relation(fields: [pet_id], references: [id])
+  characteristic Characteristic @relation(fields: [characteristic_id], references: [id])
+
+  @@map("pet_characteristic")
 }
 
 enum Role {
