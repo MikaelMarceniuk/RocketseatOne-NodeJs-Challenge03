@@ -21,7 +21,6 @@ function generateDatabaseURL(schema: string) {
 
 export default <Environment>{
   name: "prisma",
-  transformMode: "web",
   setup() {
     const schema = randomUUID()
     const databaseURL = generateDatabaseURL(schema)
